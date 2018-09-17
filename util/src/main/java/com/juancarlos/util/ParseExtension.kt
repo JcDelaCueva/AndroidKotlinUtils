@@ -1,6 +1,5 @@
 package com.juancarlos.util
 
-import android.text.TextUtils
 import com.parse.ParseException
 import com.parse.ParseObject
 import com.parse.ParseUser
@@ -25,13 +24,10 @@ public open class BaseUser : ParseUser() {
         return list
     }
 
-    override fun getString(key: String): String {
-        var value = ""
+    override fun getString(key: String): String? {
+        var value: String? = ""
         try {
-            value = super.getString(key)
-            if (TextUtils.isEmpty(value)) {
-                value = ""
-            }
+            value = super.getString(key) ?: ""
         } catch (ise: IllegalStateException) {
 
         }
@@ -87,13 +83,10 @@ public open class BaseParseObject : ParseObject() {
         return list
     }
 
-    override fun getString(key: String): String {
-        var value = ""
+    override fun getString(key: String): String? {
+        var value: String? = ""
         try {
-            value = super.getString(key)
-            if (TextUtils.isEmpty(value)) {
-                value = ""
-            }
+            value = super.getString(key) ?: ""
         } catch (ise: IllegalStateException) {
 
         }
