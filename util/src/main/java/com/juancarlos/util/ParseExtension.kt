@@ -229,3 +229,11 @@ inline fun ParseException.isSessionError(): Boolean {
             || code == ParseException.INVALID_SESSION_TOKEN
             || code == ParseException.INVALID_LINKED_SESSION
 }
+
+inline fun ParseException.isConnectionError() = when(code) {
+    ParseException.CONNECTION_FAILED -> true
+    ParseException.TIMEOUT -> true
+    else -> false
+}
+
+inline fun ParseException.objectNotFound() = code == ParseException.OBJECT_NOT_FOUND
